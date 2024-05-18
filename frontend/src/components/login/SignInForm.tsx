@@ -1,9 +1,13 @@
 import Button from "../Button"
 import InputGroup from "../form/InputGroup"
+import InputError from "../form/InputError"
+import useSignIn from "@/hooks/useSignIn"
 
 const SignInForm = () => {
+  const { handleSubmit, inputErrors } = useSignIn()
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col gap-4">
         <InputGroup
           label="Email"
@@ -17,7 +21,11 @@ const SignInForm = () => {
           }}
           required
           inputClassName="text-black pl-2 bg-rock-blue rounded-sm h-8"
-        ></InputGroup>
+        >
+          {inputErrors?.email && (
+            <InputError message={inputErrors?.email?.message} />
+          )}
+        </InputGroup>
         <InputGroup
           label="Contraseña"
           htmlFor="password"
@@ -30,7 +38,11 @@ const SignInForm = () => {
           }}
           required
           inputClassName="text-black pl-2 bg-rock-blue rounded-sm h-8"
-        ></InputGroup>
+        >
+          {inputErrors?.password && (
+            <InputError message={inputErrors?.password?.message} />
+          )}
+        </InputGroup>
         <Button
           type="submit"
           className="h-10 bg-crimson rounded-sm mt-4 hover:bg-dark-crimson"

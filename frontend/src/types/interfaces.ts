@@ -26,3 +26,40 @@ export interface ButtonProps {
   props?: React.ButtonHTMLAttributes<HTMLButtonElement>
   type: "button" | "submit" | "reset"
 }
+
+export interface UseFormProps {
+  onSubmit: ({ data }: FormDataProps) => void
+}
+
+export interface InputError {
+  [inputName: string]: {
+    message: string
+  }
+}
+
+export interface FormDataProps {
+  data: { [k: string]: FormDataEntryValue }
+}
+
+export interface HandleAxiosRequestsProps {
+  method: "get" | "post" | "put" | "delete" | "patch"
+  url: string
+  body?: { [k: string]: FormDataEntryValue }
+  headers?: { [k: string]: string }
+  errorMessage?: string
+  successMessage?: string
+}
+
+export interface UserProps {
+  id: number
+  email: string
+  first_name: string
+  last_name: string
+  profile_image: string
+}
+
+export interface LoginResponseProps {
+  access_token: string
+  refresh_token: string
+  payload: UserProps
+}
