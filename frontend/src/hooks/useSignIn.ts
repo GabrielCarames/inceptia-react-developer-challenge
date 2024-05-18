@@ -10,7 +10,7 @@ const useSignIn = () => {
     const res = await signIn({ data })
     if (!res?.error) {
       console.log(res?.data)
-      navigate("/")
+      // navigate("/")
     }
   }
   const { handleSubmit, inputErrors } = useForm({ onSubmit: handleSignIn })

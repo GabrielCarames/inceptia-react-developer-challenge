@@ -2,7 +2,7 @@ import SignInForm from "@/components/login/SignInForm"
 
 export default function SignIn() {
   return (
-    <main className="h-full min-h-screen flex justify-center items-center bg-dark text-white px-3">
+    <main className="h-full min-h-screen flex justify-center items-center bg-ghost-white dark:bg-dark text-black dark:text-white px-3">
       <div className="w-full max-w-lg flex min-h-full flex-1 flex-col justify-center">
         <div className="w-full flex flex-col gap-5">
           <div className="sm:mx-auto sm:w-full sm:max-wlg">
@@ -12,7 +12,7 @@ export default function SignIn() {
             <h2 className="text-center text-xl mt-5">Iniciar sesión</h2>
           </div>
         </div>
-        <div className="mt-10 sm:mx-auto sm:w-full bg-shark rounded-lg border border-tuna shadow-md px-6 py-12 lg:px-8">
+        <div className="mt-10 sm:mx-auto sm:w-full bg-white dark:bg-shark rounded-xl border border-white-smoke dark:border-tuna shadow-md px-6 py-12 lg:px-8">
           <SignInForm />
         </div>
       </div>

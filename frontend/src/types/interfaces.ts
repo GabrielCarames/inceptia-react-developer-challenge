@@ -6,18 +6,12 @@ export interface InputGroupProps {
   containerClassName?: string
   label: string
   inputProps: React.InputHTMLAttributes<HTMLInputElement>
-  inputClassName?: string
   htmlFor: string
   children?: React.ReactNode
-  id: string
-  required?: boolean
 }
 
 export interface InputProps {
-  required?: boolean
-  id: string
   props: React.InputHTMLAttributes<HTMLInputElement>
-  className?: string
 }
 
 export interface ButtonProps {
@@ -59,7 +53,6 @@ export interface UserProps {
 }
 
 export interface LoginResponseProps {
-  access_token: string
-  refresh_token: string
-  payload: UserProps
+  token: string
+  email: string
 }

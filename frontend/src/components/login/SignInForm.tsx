@@ -12,15 +12,15 @@ const SignInForm = () => {
         <InputGroup
           label="Email"
           htmlFor="email"
-          id={"email"}
           inputProps={{
             type: "text",
+            id: "email",
             name: "email",
             autoComplete: "email",
-            className: "h-5"
+            className:
+              "text-black pl-2 dark:bg-tuna border border-raven rounded-md h-8 focus:outline-none focus:border-persian-green dark:text-white",
+            required: true
           }}
-          required
-          inputClassName="text-black pl-2 bg-rock-blue rounded-sm h-8"
         >
           {inputErrors?.email && (
             <InputError message={inputErrors?.email?.message} />
@@ -29,15 +29,15 @@ const SignInForm = () => {
         <InputGroup
           label="Contraseña"
           htmlFor="password"
-          id={"password"}
           inputProps={{
             type: "password",
+            id: "password",
             name: "password",
             autoComplete: "current-password",
-            className: "h-5"
+            className:
+              "text-black pl-2 dark:bg-tuna border border-raven rounded-md h-8 focus:outline-none focus:border-persian-green dark:text-white",
+            required: true
           }}
-          required
-          inputClassName="text-black pl-2 bg-rock-blue rounded-sm h-8"
         >
           {inputErrors?.password && (
             <InputError message={inputErrors?.password?.message} />
@@ -45,7 +45,7 @@ const SignInForm = () => {
         </InputGroup>
         <Button
           type="submit"
-          className="h-10 bg-crimson rounded-sm mt-4 hover:bg-dark-crimson"
+          className="h-10 bg-persian-green rounded-md mt-4 hover:bg-monte-carlo hover:text-black text-white dark:text-black"
         >
           Ingresar
         </Button>

@@ -43,7 +43,7 @@ const handleRequest = async ({
       toast &&
       toast?.error &&
       toast?.error(
-        `${errorMessage}. \n Error: ${error?.response?.data?.message}`
+        `${errorMessage}. \n Error: ${error?.response?.data?.non_field_errors}`
       )
     errorInfo = error
   }

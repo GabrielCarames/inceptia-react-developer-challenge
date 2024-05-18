@@ -2,21 +2,20 @@ import { FormDataProps, LoginResponseProps } from "@/types/interfaces"
 import handleRequest from "@/utils/handleRequest"
 
 const handleSignIn = ({ userData }: { userData: LoginResponseProps }) => {
-  const { access_token, payload } = userData
-  localStorage.setItem("access_token", access_token)
-  localStorage.setItem("user_email", payload?.email)
+  const { token, email } = userData
+  localStorage.setItem("access_token", token)
+  localStorage.setItem("user_email", email)
 }
 
 export const signIn = async ({ data }: FormDataProps) => {
   const res = await handleRequest({
     method: "post",
-    url: `${import.meta.env.VITE_API_BASE_URL}/auth/custom`,
+    url: `${import.meta.env.VITE_API_BASE_URL}/login/`,
     body: data,
-    errorMessage:
-      "Ha ocurrido un error al iniciar sesión. Por favor, inténtalo de nuevo más tarde."
+    errorMessage: "Ha ocurrido un error al iniciar sesión"
   })
   if (!res?.error) {
-    handleSignIn({ userData: res?.data?.body })
+    handleSignIn({ userData: res?.data })
   }
   return res
 }
