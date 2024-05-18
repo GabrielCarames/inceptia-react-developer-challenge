@@ -18,7 +18,7 @@ const SignInForm = () => {
             name: "email",
             autoComplete: "email",
             className:
-              "text-black pl-2 dark:bg-tuna border border-raven rounded-md h-8 focus:outline-none focus:border-persian-green dark:text-white",
+              "text-black pl-2 dark:bg-tuna border border-gray-300 dark:border-raven rounded-md h-8 focus:outline-none focus:border-persian-green dark:text-white",
             required: true
           }}
         >
@@ -35,7 +35,7 @@ const SignInForm = () => {
             name: "password",
             autoComplete: "current-password",
             className:
-              "text-black pl-2 dark:bg-tuna border border-raven rounded-md h-8 focus:outline-none focus:border-persian-green dark:text-white",
+              "text-black pl-2 dark:bg-tuna border border-gray-300 dark:border-raven rounded-md h-8 focus:outline-none focus:border-persian-green dark:text-white",
             required: true
           }}
         >

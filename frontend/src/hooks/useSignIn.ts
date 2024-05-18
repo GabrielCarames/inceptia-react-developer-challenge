@@ -9,8 +9,9 @@ const useSignIn = () => {
   const handleSignIn = async ({ data }: FormDataProps) => {
     const res = await signIn({ data })
     if (!res?.error) {
-      console.log(res?.data)
-      // navigate("/")
+      // console.log(res?.data)
+      // TODO: save user data in redux
+      navigate("/admin")
     }
   }
   const { handleSubmit, inputErrors } = useForm({ onSubmit: handleSignIn })

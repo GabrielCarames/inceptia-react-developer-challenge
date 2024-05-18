@@ -56,3 +56,7 @@ export interface LoginResponseProps {
   token: string
   email: string
 }
+
+export interface LayoutProps {
+  children: React.ReactNode
+}
