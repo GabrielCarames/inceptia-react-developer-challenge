@@ -7,9 +7,12 @@ import { getCases } from "@/components/services/cases"
 
 const useTable = ({ id }: { id: string }) => {
   const [search, setSearch] = useState("")
-  const [sortBy, setSortBy] = useState("name")
   const [maxPage, setMaxPage] = useState(1)
+  const [cases, setCases] = useState([])
+  const [sortDirection, setSortDirection] = useState("asc")
+  const [sortBy, setSortBy] = useState("asc")
   const debouncedFilter = useDebounce(search, 500)
+
   const {
     currentPage,
     handlePrevClick,
@@ -32,7 +35,33 @@ const useTable = ({ id }: { id: string }) => {
     // enabled: debouncedFilter !== ""
   })
 
-  console.log(casesBySearch)
+  useEffect(() => {
+    if (!casesBySearch) return
+    console.log("soy")
+    const maxPage = Math.ceil(casesBySearch?.count / 20)
+    setCases(casesBySearch?.results)
+    setMaxPage(maxPage)
+  }, [casesBySearch])
+
+  // useEffect(() => {
+  //   if (sortBy === "default") return
+  //   getSortedCases()
+  // }, [sortBy])
+
+  const sortCasesByCaseType = ({ sortBy }: { sortBy: string }) => {
+    const sortedCases = [...cases].sort((a, b) =>
+      sortDirection === "asc"
+        ? a[sortBy] < b[sortBy]
+          ? 1
+          : -1
+        : a[sortBy] > b[sortBy]
+        ? 1
+        : -1
+    )
+    setCases(sortedCases)
+    setSortBy(sortBy)
+    setSortDirection(sortDirection === "asc" ? "desc" : "asc")
+  }
 
   // const sortTable = {
   //   idCase: { idCase: debouncedFilter },
@@ -43,7 +72,7 @@ const useTable = ({ id }: { id: string }) => {
   //   call: { call: debouncedFilter },
   // }
 
-  // const getSortBy = sortBy => {
+  // const getSortBy = (sortBy: string) => {
   //   switch (sortBy) {
   //     case "idCase":
   //       return sortTable.idCase
@@ -60,26 +89,23 @@ const useTable = ({ id }: { id: string }) => {
   //   }
   // }
 
-  useEffect(() => {
-    if (search === "") return
-    clearCurrentPage()
-  }, [search, sortBy, currentPage])
-
-  useEffect(() => {
-    const maxPage = Math.ceil(casesBySearch?.count / 20)
-    setMaxPage(maxPage)
-  }, [casesBySearch])
+  // useEffect(() => {
+  //   if (search === "") return
+  //   clearCurrentPage()
+  // }, [search, currentPage])
 
   return {
-    cases: casesBySearch?.results,
+    cases,
     search,
     setSearch,
-    setSortBy,
+    sortCasesByCaseType,
     maxPage,
     currentPage,
     handlePrevClick,
     handleNextClick,
-    jumpToPage
+    jumpToPage,
+    sortDirection,
+    sortBy
   }
 }
 

@@ -10,12 +10,14 @@ export default function ClientPage() {
     cases,
     search,
     setSearch,
-    setSortBy,
+    sortCasesByCaseType,
     maxPage,
     currentPage,
     handlePrevClick,
     handleNextClick,
-    jumpToPage
+    jumpToPage,
+    sortBy,
+    sortDirection
   } = useTable({ id: id ?? "0" })
 
   return (
@@ -25,10 +27,15 @@ export default function ClientPage() {
           search={search}
           setSearch={setSearch}
           placeholder="Buscar..."
-          setSortBy={setSortBy}
+          // setSortBy={setSortBy}
         />
         <div className="w-full overflow-x-auto mb-10">
-          <Table cases={cases} />
+          <Table
+            cases={cases}
+            sortCasesByCaseType={sortCasesByCaseType}
+            sortBy={sortBy}
+            sortDirection={sortDirection}
+          />
         </div>
         <Pagination
           currentPage={currentPage}

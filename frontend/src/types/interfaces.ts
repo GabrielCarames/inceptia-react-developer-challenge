@@ -143,6 +143,9 @@ export interface PaginatedResponse {
 
 export interface TableProps {
   cases: InboundCase[]
+  sortCasesByCaseType: ({ sortBy }: { sortBy: string }) => void
+  sortDirection: string
+  sortBy: string
 }
 
 export interface PaginationProps {

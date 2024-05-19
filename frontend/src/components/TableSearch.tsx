@@ -3,9 +3,9 @@ import { TableSearchProps } from "@/types/interfaces"
 const TableSearch = ({
   placeholder,
   search,
-  setSearch,
-  setSortBy
-}: TableSearchProps) => {
+  setSearch
+}: // setSortBy
+TableSearchProps) => {
   return (
     <div className="relative flex h-14 w-full items-center border-stroke bg-gray-2 pl-4 text-white bg-shark border border-tuna border-b-transparent rounded-lg">
       <button className="absolute top-1/2 left-4 -translate-y-1/2">
@@ -18,7 +18,7 @@ const TableSearch = ({
         value={search}
         onChange={e => setSearch(e.target.value)}
       />
-      {setSortBy && (
+      {/* {setSortBy && (
         <select
           name="order"
           className="mr-2 w-full max-w-[200px] border border-stroke border-rock-blue rounded-lg text-white bg-tuna p-2"
@@ -33,7 +33,7 @@ const TableSearch = ({
           <option value="call">Buscar por Llamada</option>
           <option value="state">Buscar por Estado</option>
         </select>
-      )}
+      )} */}
     </div>
   )
 }

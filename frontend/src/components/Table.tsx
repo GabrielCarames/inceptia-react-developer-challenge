@@ -1,47 +1,76 @@
 import { TableProps } from "@/types/interfaces"
 
-export default function Table({ cases }: TableProps) {
+export default function Table({
+  cases,
+  sortCasesByCaseType,
+  sortDirection,
+  sortBy
+}: TableProps) {
+  const handleClassName = (sortName: string) => {
+    return `${
+      sortBy === sortName && sortDirection === "asc"
+        ? "icon-[ic--baseline-chevron-left]"
+        : "icon-[ic--baseline-chevron-right]"
+    } rotate-90 size-8`
+  }
+
   return (
     <table className="w-full table-auto text-black dark:bg-shark dark:text-white border dark:border-tuna">
       <thead>
         <tr className="text-left">
           <th className="w-[250px] font-medium px-4 py-2">
-            <div className="w-max users-center flex gap-2">
+            <button
+              className="w-max flex gap-2"
+              onClick={() => sortCasesByCaseType({ sortBy: "last_updated" })}
+            >
               <span>Gestionado</span>
-            </div>
+              <span className={handleClassName("last_updated")} />
+            </button>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
-            <div className="w-maxusers-center flex gap-2">
+            <button
+              className="w-max flex gap-2"
+              onClick={() => sortCasesByCaseType({ sortBy: "case_uuid" })}
+            >
               <span>ID Caso</span>
-            </div>
+              <span className={handleClassName("case_uuid")} />
+            </button>
           </th>
           <th className="min-w-[120px] px-4 font-medium py-2">
-            <div className="flex w-max users-center gap-2">
+            <button
+              className="w-max flex gap-2"
+              onClick={() => sortCasesByCaseType({ sortBy: "phone" })}
+            >
               <span>Teléfono</span>
-            </div>
+              <span className={handleClassName("phone")} />
+            </button>
           </th>
           <th className="min-w-[100px] px-4 font-medium py-2">
-            <div className="flex w-max users-center gap-2">
+            <button className="w-max flex gap-2">
               <span>DNI</span>
-            </div>
+            </button>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
-            <div className="flex w-max users-center gap-2">
+            <div className="flex w-max gap-2">
               <span>Grupo</span>
             </div>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
-            <div className="flex w-max users-center gap-2">
+            <div className="flex w-max gap-2">
               <span>Orden</span>
             </div>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
-            <div className="flex w-max users-center gap-2">
+            <button
+              className="w-max flex gap-2"
+              onClick={() => sortCasesByCaseType({ sortBy: "case_duration" })}
+            >
               <span>Llamada</span>
-            </div>
+              <span className={handleClassName("case_duration")} />
+            </button>
           </th>
           <th className="w-[290px] px-4 font-medium py-2">
-            <div className="flex w-max users-center gap-2">
+            <div className="flex w-max gap-2">
               <span>Estado</span>
             </div>
           </th>
