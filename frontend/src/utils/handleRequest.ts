@@ -16,6 +16,16 @@ axiosApiInstance.interceptors.request.use(
   }
 )
 
+const getErrorData = (data: string) => {
+  if (data && typeof data === "object") {
+    const keys = Object.keys(data)
+    if (keys.length > 0) {
+      return data[keys[0]]
+    }
+  }
+  return data
+}
+
 const handleRequest = async ({
   method,
   url,
@@ -39,12 +49,11 @@ const handleRequest = async ({
     data = response?.data
     successMessage && toast && toast?.success && toast?.success(successMessage)
   } catch (error: any) {
+    const errorReason = getErrorData(error?.response?.data)
     errorMessage &&
       toast &&
       toast?.error &&
-      toast?.error(
-        `${errorMessage}. \n Error: ${error?.response?.data?.non_field_errors}`
-      )
+      toast?.error(`${errorMessage}. \n Error: ${errorReason}`)
     errorInfo = error
   }
 
