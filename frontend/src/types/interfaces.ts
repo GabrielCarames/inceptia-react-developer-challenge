@@ -50,6 +50,8 @@ export interface UserProps {
   first_name: string
   last_name: string
   profile_image: string
+  groups: { id: number; name: string }[]
+  is_active: boolean
 }
 
 export interface LoginResponseProps {
@@ -59,4 +61,14 @@ export interface LoginResponseProps {
 
 export interface LayoutProps {
   children: React.ReactNode
+}
+
+export interface HandleRequestsProps {
+  request: () => Promise<unknown>
+}
+
+export interface ClientProps {
+  id: number
+  name: string
+  users: UserProps[]
 }
