@@ -1,24 +1,43 @@
-import { getCases } from "@/components/services/cases"
-import { useQuery } from "@tanstack/react-query"
+import Pagination from "@/components/Pagination"
+import Table from "@/components/Table"
+import TableSearch from "@/components/TableSearch"
+import useTable from "@/hooks/useTable"
 import { useParams } from "react-router-dom"
 
 export default function ClientPage() {
   const { id } = useParams()
-  const { data: cases } = useQuery({
-    queryKey: ["cases"],
-    queryFn: () =>
-      getCases({
-        client: id,
-        local_updated__date__gte: "2021-03-01",
-        local_updated__date__lte: "2022-03-25"
-      }),
-    retry: false,
-    refetchOnWindowFocus: false
-  })
-  console.log(cases)
+  const {
+    cases,
+    search,
+    setSearch,
+    setSortBy,
+    maxPage,
+    currentPage,
+    handlePrevClick,
+    handleNextClick,
+    jumpToPage
+  } = useTable({ id: id ?? "0" })
+
   return (
     <div>
-      <h2>Client ID: {id}</h2>
+      <div className="flex flex-col px-4 sm:px-0">
+        <TableSearch
+          search={search}
+          setSearch={setSearch}
+          placeholder="Buscar..."
+          setSortBy={setSortBy}
+        />
+        <div className="w-full overflow-x-auto mb-10">
+          <Table cases={cases} />
+        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={maxPage}
+          handlePrevClick={handlePrevClick}
+          handleNextClick={handleNextClick}
+          jumpToPage={jumpToPage}
+        />
+      </div>
     </div>
   )
 }

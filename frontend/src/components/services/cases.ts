@@ -1,3 +1,4 @@
+import { GetCasesProps } from "@/types/interfaces"
 import handleRequest from "@/utils/handleRequest"
 import queryString from "query-string"
 
@@ -11,21 +12,17 @@ const removeUndefinedFields = (queryParams: string) => {
   return result
 }
 
-interface GetCasesBody {
-  client?: string
-  local_updated__date__gte?: string
-  local_updated__date__lte?: string
-}
-
 export const getCases = async ({
   client: bot = "",
   local_updated__date__gte = "",
-  local_updated__date__lte = ""
-}: GetCasesBody) => {
+  local_updated__date__lte = "",
+  page
+}: GetCasesProps) => {
   const queryParams = queryString.stringify({
     bot,
     local_updated__date__gte,
-    local_updated__date__lte
+    local_updated__date__lte,
+    page
   })
   const defaultUrl = `${
     import.meta.env.VITE_API_BASE_URL

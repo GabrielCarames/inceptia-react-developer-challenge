@@ -68,3 +68,94 @@ export interface ClientProps {
   name: string
   users: UserProps[]
 }
+
+export interface GetCasesProps {
+  client?: string
+  local_updated__date__gte?: string
+  local_updated__date__lte?: string
+  page: number
+}
+
+interface Client {
+  id: number
+  name: string
+}
+
+interface CaseResult {
+  result_id: number
+  name: string
+  is_final: boolean
+  contacted: boolean
+}
+
+interface CaseResponse {
+  text: string
+  time: number
+  confidence: number
+}
+
+interface CaseTranscription {
+  text: string
+  time: number
+  confidence: number
+}
+
+interface CaseLog {
+  responses: CaseResponse[]
+  result_id: number
+  commitment: string
+  got_promise: boolean
+  transcription: CaseTranscription[]
+  final_sip_code: number
+}
+
+interface ExtraMetadata {
+  dni: string
+  grupo: string
+  orden: string
+}
+
+export interface InboundCase {
+  id: number
+  client: Client
+  case_uuid: string
+  phone: number
+  first_name: string
+  last_name: string
+  code: string | null
+  case_result: CaseResult
+  case_duration: string
+  case_log: CaseLog
+  extra_metadata: ExtraMetadata
+  recording: string
+  is_complete: boolean
+  status: string
+  last_updated: string
+  is_active: boolean
+}
+
+export interface PaginatedResponse {
+  count: number
+  next: string | null
+  previous: string | null
+  results: InboundCase[]
+}
+
+export interface TableProps {
+  cases: InboundCase[]
+}
+
+export interface PaginationProps {
+  currentPage: number
+  totalPages: number
+  handlePrevClick: () => void
+  handleNextClick: () => void
+  jumpToPage: (e: React.FormEvent<HTMLFormElement>) => void
+}
+
+export interface TableSearchProps {
+  placeholder: string
+  search: string
+  setSearch: (value: string) => void
+  setSortBy?: (value: string) => void
+}
