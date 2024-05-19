@@ -63,10 +63,6 @@ export interface LayoutProps {
   children: React.ReactNode
 }
 
-export interface HandleRequestsProps {
-  request: () => Promise<unknown>
-}
-
 export interface ClientProps {
   id: number
   name: string
