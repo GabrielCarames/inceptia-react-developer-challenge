@@ -6,6 +6,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom"
 import NotFound from "./pages/NotFound.tsx"
 import SignIn from "./pages/SignIn.tsx"
 import { Toaster } from "react-hot-toast"
+import Client from "./pages/Client.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -16,7 +17,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     />
     <BrowserRouter>
       <Routes>
-        <Route path="/admin" element={<App />} />
+        <Route path="/admin" element={<App />}>
+          <Route path="client">
+            <Route path=":id" element={<Client />} />
+          </Route>
+        </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
