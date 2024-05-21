@@ -1,22 +1,19 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import { useDebounce } from "@uidotdev/usehooks"
 import usePagination from "./usePagination"
 import { useQuery } from "@tanstack/react-query"
 import { getCases } from "@/components/services/cases"
 import { InboundCase } from "@/types/interfaces"
+import useSearch from "./useSearch"
+import useSort from "./useSort"
 
 const useTable = ({ id }: { id: string }) => {
-  const [search, setSearch] = useState("")
   const [maxPage, setMaxPage] = useState(1)
-  const [cases, setCases] = useState([])
-  const [sortDirection, setSortDirection] = useState("asc")
-  const [sortBy, setSortBy] = useState("asc")
+  const [cases, setCases] = useState<InboundCase[]>([])
   const [searchBy, setSearchBy] = useState("last_updated")
   const [gteDate, setGteDate] = useState("2021-03-01")
   const [lteDate, setLteDate] = useState("2022-03-25")
-  const debouncedSearch = useDebounce(search, 500)
-  const MAX_RESULTS_PER_PAGE = 20
+  const { sortDirection, sortBy, sortCasesByCaseType } = useSort()
 
   const {
     currentPage,
@@ -25,6 +22,12 @@ const useTable = ({ id }: { id: string }) => {
     jumpToPage,
     clearCurrentPage
   } = usePagination(maxPage)
+  const { search, debouncedSearch, setSearch, handleSearch } = useSearch({
+    currentPage,
+    clearCurrentPage
+  })
+
+  const MAX_RESULTS_PER_PAGE = 20
 
   const { data: casesBySearch } = useQuery({
     queryKey: ["casesBySearch", currentPage, gteDate, lteDate],
@@ -46,51 +49,15 @@ const useTable = ({ id }: { id: string }) => {
     setMaxPage(maxPage)
   }, [casesBySearch])
 
-  const sortCasesByCaseType = ({ sortBy }: { sortBy: string }) => {
-    const sortedCases = [...cases].sort((a, b) =>
-      sortDirection === "asc"
-        ? a[sortBy] < b[sortBy]
-          ? 1
-          : -1
-        : a[sortBy] > b[sortBy]
-        ? 1
-        : -1
-    )
-    setCases(sortedCases)
-    setSortBy(sortBy)
-    setSortDirection(sortDirection === "asc" ? "desc" : "asc")
-  }
-
-  useEffect(() => {
-    if (search === "") return
-    clearCurrentPage()
-  }, [currentPage])
-
-  const handleSearch = () => {
-    const splitedSearchBy = searchBy.split(" ")
-    let value
-    const casesBySearchType = cases.filter((_case: InboundCase) => {
-      if (splitedSearchBy.length > 1) {
-        const firstValue = _case?.[splitedSearchBy[0] as keyof InboundCase]
-        value = firstValue?.[splitedSearchBy[1] as keyof typeof firstValue]
-      } else {
-        value = _case?.[searchBy as keyof InboundCase]
-      }
-      return (
-        value !== undefined &&
-        value !== null &&
-        value.toString().includes(search)
-      )
-    })
-    setCases(casesBySearchType)
-    setMaxPage(1)
+  const handleSetCases = (newCases: InboundCase[]) => {
+    setCases(newCases)
   }
 
   useEffect(() => {
     if (search === "") {
       if (casesBySearch?.results.length === 0) return
       setCases(casesBySearch?.results)
-    } else handleSearch()
+    } else handleSearch({ searchBy, cases, setCases, setMaxPage })
   }, [debouncedSearch])
 
   return {
@@ -109,7 +76,8 @@ const useTable = ({ id }: { id: string }) => {
     setGteDate,
     setLteDate,
     gteDate,
-    lteDate
+    lteDate,
+    handleSetCases
   }
 }
 

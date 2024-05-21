@@ -22,7 +22,8 @@ export default function ClientPage() {
     setGteDate,
     setLteDate,
     gteDate,
-    lteDate
+    lteDate,
+    handleSetCases
   } = useTable({ id: id ?? "0" })
 
   return (
@@ -44,6 +45,7 @@ export default function ClientPage() {
             sortCasesByCaseType={sortCasesByCaseType}
             sortBy={sortBy}
             sortDirection={sortDirection}
+            handleSetCases={handleSetCases}
           />
         </div>
         <Pagination

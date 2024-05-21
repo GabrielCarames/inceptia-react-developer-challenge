@@ -4,7 +4,8 @@ export default function Table({
   cases,
   sortCasesByCaseType,
   sortDirection,
-  sortBy
+  sortBy,
+  handleSetCases
 }: TableProps) {
   const handleClassName = (sortName: string) => {
     return `${
@@ -21,16 +22,29 @@ export default function Table({
           <th className="w-[250px] font-medium px-4 py-2">
             <button
               className="w-max flex gap-2"
-              onClick={() => sortCasesByCaseType({ sortBy: "last_updated" })}
+              onClick={() =>
+                sortCasesByCaseType({
+                  sortBy: "last_updated",
+                  cases,
+                  handleSetCases
+                })
+              }
             >
               <span>Gestionado</span>
               <span className={handleClassName("last_updated")} />
             </button>
           </th>
+
           <th className="min-w-[80px] px-4 font-medium py-2">
             <button
               className="w-max flex gap-2"
-              onClick={() => sortCasesByCaseType({ sortBy: "case_uuid" })}
+              onClick={() =>
+                sortCasesByCaseType({
+                  sortBy: "case_uuid",
+                  cases,
+                  handleSetCases
+                })
+              }
             >
               <span>ID Caso</span>
               <span className={handleClassName("case_uuid")} />
@@ -39,7 +53,9 @@ export default function Table({
           <th className="min-w-[120px] px-4 font-medium py-2">
             <button
               className="w-max flex gap-2"
-              onClick={() => sortCasesByCaseType({ sortBy: "phone" })}
+              onClick={() =>
+                sortCasesByCaseType({ sortBy: "phone", cases, handleSetCases })
+              }
             >
               <span>Teléfono</span>
               <span className={handleClassName("phone")} />
@@ -63,7 +79,13 @@ export default function Table({
           <th className="min-w-[80px] px-4 font-medium py-2">
             <button
               className="w-max flex gap-2"
-              onClick={() => sortCasesByCaseType({ sortBy: "case_duration" })}
+              onClick={() =>
+                sortCasesByCaseType({
+                  sortBy: "case_duration",
+                  cases,
+                  handleSetCases
+                })
+              }
             >
               <span>Llamada</span>
               <span className={handleClassName("case_duration")} />

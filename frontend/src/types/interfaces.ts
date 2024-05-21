@@ -143,9 +143,14 @@ export interface PaginatedResponse {
 
 export interface TableProps {
   cases: InboundCase[]
-  sortCasesByCaseType: ({ sortBy }: { sortBy: string }) => void
+  sortCasesByCaseType: ({
+    sortBy,
+    cases,
+    handleSetCases
+  }: sortCasesByCaseTypeProps) => void
   sortDirection: string
-  sortBy: string
+  sortBy: InboundCaseKeys
+  handleSetCases: (newCases: InboundCase[]) => void
 }
 
 export interface PaginationProps {
@@ -165,4 +170,24 @@ export interface TableSearchProps {
   setLteDate: (value: string) => void
   gteDate: string
   lteDate: string
+}
+
+export interface useSearchProps {
+  currentPage: number
+  clearCurrentPage: () => void
+}
+
+export type InboundCaseKeys = keyof InboundCase
+
+export interface sortCasesByCaseTypeProps {
+  sortBy: InboundCaseKeys
+  cases: InboundCase[]
+  handleSetCases: (cases: InboundCase[]) => void
+}
+
+export interface handleSearchProps {
+  searchBy: string
+  cases: InboundCase[]
+  setCases: (cases: InboundCase[]) => void
+  setMaxPage: (page: number) => void
 }
