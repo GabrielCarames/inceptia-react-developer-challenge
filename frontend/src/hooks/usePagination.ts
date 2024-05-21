@@ -5,6 +5,7 @@ const defaultCurrentPage = () => {
     const { page } = JSON.parse(sessionStorage.getItem("currentPage") ?? "")
     return page
   }
+  return 1
 }
 
 const usePagination = (maxPage: number) => {

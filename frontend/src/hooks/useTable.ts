@@ -16,6 +16,7 @@ const useTable = ({ id }: { id: string }) => {
   const [gteDate, setGteDate] = useState("2021-03-01")
   const [lteDate, setLteDate] = useState("2022-03-25")
   const debouncedSearch = useDebounce(search, 500)
+  const MAX_RESULTS_PER_PAGE = 20
 
   const {
     currentPage,
@@ -40,7 +41,7 @@ const useTable = ({ id }: { id: string }) => {
 
   useEffect(() => {
     if (!casesBySearch) return
-    const maxPage = Math.ceil(casesBySearch?.count / 20)
+    const maxPage = Math.ceil(casesBySearch?.count / MAX_RESULTS_PER_PAGE)
     setCases(casesBySearch?.results)
     setMaxPage(maxPage)
   }, [casesBySearch])
@@ -82,6 +83,7 @@ const useTable = ({ id }: { id: string }) => {
       )
     })
     setCases(casesBySearchType)
+    setMaxPage(1)
   }
 
   useEffect(() => {

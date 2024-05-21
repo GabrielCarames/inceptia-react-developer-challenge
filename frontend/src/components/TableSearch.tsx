@@ -16,8 +16,9 @@ const TableSearch = ({
     return yesterday.toISOString().split("T")[0]
   }
 
-  const minLteDate = () => {
+  const maxLteDate = () => {
     const today = new Date()
+    today.setDate(today.getDate())
     return today.toISOString().split("T")[0]
   }
 
@@ -58,7 +59,7 @@ const TableSearch = ({
           type="date"
           name="lte"
           id="lte"
-          min={minLteDate()}
+          max={maxLteDate()}
           value={lteDate}
           onChange={e => setLteDate(e.target.value)}
         />

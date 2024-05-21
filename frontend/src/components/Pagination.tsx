@@ -43,7 +43,7 @@ const Pagination = ({
           >
             <span>Ir a la página</span>
             <input
-              className="border-gray-300 h-10 w-12 rounded-md border bg-gray-2 px-2 focus:border-blue-1 focus:outline-none focus:ring-0"
+              className="border-gray-300 h-10 w-16 rounded-md border bg-gray-2 px-2 focus:border-blue-1 focus:outline-none focus:ring-0 text-black"
               type="number"
               name="jumptopage"
               max={totalPages <= 1 ? 1 : totalPages}
