@@ -3,8 +3,8 @@ import handleRequest from "@/utils/handleRequest"
 
 const handleSignIn = ({ userData }: { userData: LoginResponseProps }) => {
   const { token, email } = userData
-  localStorage.setItem("access_token", token)
-  localStorage.setItem("user_email", email)
+  sessionStorage.setItem("access_token", token)
+  sessionStorage.setItem("user_email", email)
 }
 
 export const signIn = async ({ data }: FormDataProps) => {

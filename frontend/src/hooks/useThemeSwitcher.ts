@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 const defaultTheme = () => {
-  const theme = localStorage.getItem("theme")
+  const theme = sessionStorage.getItem("theme")
   if (theme) {
     return theme
   }
@@ -25,7 +25,7 @@ const useThemeSwitcher = () => {
   const handleChangeTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light"
     setTheme(newTheme)
-    localStorage.setItem("theme", newTheme)
+    sessionStorage.setItem("theme", newTheme)
   }
 
   return { handleChangeTheme, theme }

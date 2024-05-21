@@ -6,7 +6,7 @@ import { HandleAxiosRequestsProps } from "@/types/interfaces"
 axiosApiInstance.interceptors.request.use(
   async config => {
     config.headers = {
-      Authorization: `JWT ${localStorage.getItem("access_token")}`,
+      Authorization: `JWT ${sessionStorage.getItem("access_token")}`,
       ...config.headers
     } as AxiosRequestHeaders
     return config
