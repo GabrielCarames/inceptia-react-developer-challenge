@@ -17,7 +17,8 @@ export default function ClientPage() {
     handleNextClick,
     jumpToPage,
     sortBy,
-    sortDirection
+    sortDirection,
+    setSearchBy
   } = useTable({ id: id ?? "0" })
 
   return (
@@ -27,7 +28,7 @@ export default function ClientPage() {
           search={search}
           setSearch={setSearch}
           placeholder="Buscar..."
-          // setSortBy={setSortBy}
+          setSearchBy={setSearchBy}
         />
         <div className="w-full overflow-x-auto mb-10">
           <Table

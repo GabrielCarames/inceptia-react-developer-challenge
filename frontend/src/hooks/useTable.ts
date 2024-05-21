@@ -4,6 +4,7 @@ import { useDebounce } from "@uidotdev/usehooks"
 import usePagination from "./usePagination"
 import { useQuery } from "@tanstack/react-query"
 import { getCases } from "@/components/services/cases"
+import { InboundCase } from "@/types/interfaces"
 
 const useTable = ({ id }: { id: string }) => {
   const [search, setSearch] = useState("")
@@ -11,7 +12,8 @@ const useTable = ({ id }: { id: string }) => {
   const [cases, setCases] = useState([])
   const [sortDirection, setSortDirection] = useState("asc")
   const [sortBy, setSortBy] = useState("asc")
-  const debouncedFilter = useDebounce(search, 500)
+  const [searchBy, setSearchBy] = useState("last_updated")
+  const debouncedSearch = useDebounce(search, 500)
 
   const {
     currentPage,
@@ -22,7 +24,7 @@ const useTable = ({ id }: { id: string }) => {
   } = usePagination(maxPage)
 
   const { data: casesBySearch } = useQuery({
-    queryKey: ["casesBySearch", debouncedFilter, currentPage],
+    queryKey: ["casesBySearch", currentPage],
     queryFn: () =>
       getCases({
         client: id,
@@ -32,21 +34,14 @@ const useTable = ({ id }: { id: string }) => {
       }),
     retry: false,
     refetchOnWindowFocus: false
-    // enabled: debouncedFilter !== ""
   })
 
   useEffect(() => {
     if (!casesBySearch) return
-    console.log("soy")
     const maxPage = Math.ceil(casesBySearch?.count / 20)
     setCases(casesBySearch?.results)
     setMaxPage(maxPage)
   }, [casesBySearch])
-
-  // useEffect(() => {
-  //   if (sortBy === "default") return
-  //   getSortedCases()
-  // }, [sortBy])
 
   const sortCasesByCaseType = ({ sortBy }: { sortBy: string }) => {
     const sortedCases = [...cases].sort((a, b) =>
@@ -63,36 +58,36 @@ const useTable = ({ id }: { id: string }) => {
     setSortDirection(sortDirection === "asc" ? "desc" : "asc")
   }
 
-  // const sortTable = {
-  //   idCase: { idCase: debouncedFilter },
-  //   phone: { phone: debouncedFilter },
-  //   dni: { dni: debouncedFilter },
-  //   group: { group: debouncedFilter },
-  //   order: { order: debouncedFilter },
-  //   call: { call: debouncedFilter },
-  // }
+  useEffect(() => {
+    if (search === "") return
+    clearCurrentPage()
+  }, [currentPage])
 
-  // const getSortBy = (sortBy: string) => {
-  //   switch (sortBy) {
-  //     case "idCase":
-  //       return sortTable.idCase
-  //     case "phone":
-  //       return sortTable.phone
-  //     case "dni":
-  //       return sortTable.dni
-  //       case "group":
-  //       return sortTable.group
-  //       case "order":
-  //       return sortTable.order
-  //       case "call":
-  //       return sortTable.call
-  //   }
-  // }
+  const handleSearch = () => {
+    const splitedSearchBy = searchBy.split(" ")
+    let value
+    const casesBySearchType = cases.filter((_case: InboundCase) => {
+      if (splitedSearchBy.length > 1) {
+        const firstValue = _case?.[splitedSearchBy[0] as keyof InboundCase]
+        value = firstValue?.[splitedSearchBy[1] as keyof typeof firstValue]
+      } else {
+        value = _case?.[searchBy as keyof InboundCase]
+      }
+      return (
+        value !== undefined &&
+        value !== null &&
+        value.toString().includes(search)
+      )
+    })
+    setCases(casesBySearchType)
+  }
 
-  // useEffect(() => {
-  //   if (search === "") return
-  //   clearCurrentPage()
-  // }, [search, currentPage])
+  useEffect(() => {
+    if (search === "") {
+      if (casesBySearch?.results.length === 0) return
+      setCases(casesBySearch?.results)
+    } else handleSearch()
+  }, [debouncedSearch])
 
   return {
     cases,
@@ -105,7 +100,8 @@ const useTable = ({ id }: { id: string }) => {
     handleNextClick,
     jumpToPage,
     sortDirection,
-    sortBy
+    sortBy,
+    setSearchBy
   }
 }
 

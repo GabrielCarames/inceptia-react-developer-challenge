@@ -81,7 +81,7 @@ interface Client {
   name: string
 }
 
-interface CaseResult {
+export interface CaseResult {
   result_id: number
   name: string
   is_final: boolean
@@ -160,5 +160,5 @@ export interface TableSearchProps {
   placeholder: string
   search: string
   setSearch: (value: string) => void
-  setSortBy?: (value: string) => void
+  setSearchBy: (value: string) => void
 }
