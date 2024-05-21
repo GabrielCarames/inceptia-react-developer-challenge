@@ -161,4 +161,8 @@ export interface TableSearchProps {
   search: string
   setSearch: (value: string) => void
   setSearchBy: (value: string) => void
+  setGteDate: (value: string) => void
+  setLteDate: (value: string) => void
+  gteDate: string
+  lteDate: string
 }

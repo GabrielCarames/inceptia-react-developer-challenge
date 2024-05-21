@@ -18,7 +18,11 @@ export default function ClientPage() {
     jumpToPage,
     sortBy,
     sortDirection,
-    setSearchBy
+    setSearchBy,
+    setGteDate,
+    setLteDate,
+    gteDate,
+    lteDate
   } = useTable({ id: id ?? "0" })
 
   return (
@@ -29,6 +33,10 @@ export default function ClientPage() {
           setSearch={setSearch}
           placeholder="Buscar..."
           setSearchBy={setSearchBy}
+          setGteDate={setGteDate}
+          setLteDate={setLteDate}
+          gteDate={gteDate}
+          lteDate={lteDate}
         />
         <div className="w-full overflow-x-auto mb-10">
           <Table

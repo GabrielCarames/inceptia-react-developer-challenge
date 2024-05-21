@@ -13,6 +13,8 @@ const useTable = ({ id }: { id: string }) => {
   const [sortDirection, setSortDirection] = useState("asc")
   const [sortBy, setSortBy] = useState("asc")
   const [searchBy, setSearchBy] = useState("last_updated")
+  const [gteDate, setGteDate] = useState("2021-03-01")
+  const [lteDate, setLteDate] = useState("2022-03-25")
   const debouncedSearch = useDebounce(search, 500)
 
   const {
@@ -24,12 +26,12 @@ const useTable = ({ id }: { id: string }) => {
   } = usePagination(maxPage)
 
   const { data: casesBySearch } = useQuery({
-    queryKey: ["casesBySearch", currentPage],
+    queryKey: ["casesBySearch", currentPage, gteDate, lteDate],
     queryFn: () =>
       getCases({
         client: id,
-        local_updated__date__gte: "2021-03-01",
-        local_updated__date__lte: "2022-03-25",
+        local_updated__date__gte: gteDate,
+        local_updated__date__lte: lteDate,
         page: currentPage
       }),
     retry: false,
@@ -101,7 +103,11 @@ const useTable = ({ id }: { id: string }) => {
     jumpToPage,
     sortDirection,
     sortBy,
-    setSearchBy
+    setSearchBy,
+    setGteDate,
+    setLteDate,
+    gteDate,
+    lteDate
   }
 }
 

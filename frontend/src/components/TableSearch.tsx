@@ -4,8 +4,23 @@ const TableSearch = ({
   placeholder,
   search,
   setSearch,
-  setSearchBy
+  setSearchBy,
+  setGteDate,
+  setLteDate,
+  gteDate,
+  lteDate
 }: TableSearchProps) => {
+  const maxGteDate = () => {
+    const yesterday = new Date()
+    yesterday.setDate(yesterday.getDate() - 1)
+    return yesterday.toISOString().split("T")[0]
+  }
+
+  const minLteDate = () => {
+    const today = new Date()
+    return today.toISOString().split("T")[0]
+  }
+
   return (
     <div className="relative flex h-14 w-full items-center border-stroke bg-gray-2 pl-4 text-white bg-shark border border-tuna border-b-transparent rounded-lg">
       <button className="absolute top-1/2 left-4 -translate-y-1/2">
@@ -30,6 +45,24 @@ const TableSearch = ({
         <option value="dni">Buscar por DNI</option>
         <option value="case_result name">Buscar por Estado</option>
       </select>
+      <div className="text-black flex items-center gap-2">
+        <input
+          type="date"
+          name="gte"
+          id="gte"
+          max={maxGteDate()}
+          value={gteDate}
+          onChange={e => setGteDate(e.target.value)}
+        />
+        <input
+          type="date"
+          name="lte"
+          id="lte"
+          min={minLteDate()}
+          value={lteDate}
+          onChange={e => setLteDate(e.target.value)}
+        />
+      </div>
     </div>
   )
 }
