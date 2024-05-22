@@ -23,30 +23,32 @@ const TableSearch = ({
   }
 
   return (
-    <div className="relative flex h-14 w-full items-center border-stroke bg-gray-2 pl-4 text-white bg-shark border border-tuna border-b-transparent rounded-lg">
-      <button className="absolute top-1/2 left-4 -translate-y-1/2">
-        <span className="icon-[ic--baseline-search] size-8" />
-      </button>
-      <input
-        type="text"
-        placeholder={placeholder}
-        className="w-full bg-transparent pr-4 pl-9 outline-none outline focus:outline-none focus:border-blue-1"
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-      />
-      <select
-        name="order"
-        className="mr-2 w-full max-w-[200px] border border-stroke border-rock-blue rounded-lg text-white bg-tuna p-2"
-        onChange={e => setSearchBy(e.target.value)}
-        defaultValue={"last_updated"}
-      >
-        <option value="last_updated">Buscar por Gestionado</option>
-        <option value="case_uuid">Buscar por ID Caso</option>
-        <option value="phone">Buscar por Teléfono</option>
-        <option value="dni">Buscar por DNI</option>
-        <option value="case_result name">Buscar por Estado</option>
-      </select>
-      <div className="text-black flex items-center gap-2">
+    <div className="w-full flex justify-between items-center mb-6">
+      <div className="relative flex h-12 w-full max-w-2xl items-center border-stroke bg-gray-2 pl-4 text-white bg-[#F1F2F3] dark:bg-tuna border border-white-gallery dark:border-tuna border-b-transparent rounded-lg">
+        <button className="absolute top-1/2 left-4 -translate-y-1/2 h-8">
+          <span className="icon-[ic--baseline-search] size-8 bg-black dark:bg-white" />
+        </button>
+        <input
+          type="text"
+          placeholder={placeholder}
+          className="w-full bg-transparent pr-4 pl-9 outline-none outline focus:outline-none focus:border-persian-green text-black dark:text-white placeholder:text-black dark:placeholder:text-white"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+        <select
+          name="order"
+          className="w-full max-w-[200px] hover:text-white h-full hover:bg-persian-green border-persian-green rounded-lg rounded-l-none bg-white text-black dark:text-white dark:bg-tuna border p-2 cursor-pointer"
+          onChange={e => setSearchBy(e.target.value)}
+          defaultValue={"last_updated"}
+        >
+          <option value="last_updated">Buscar por Gestionado</option>
+          <option value="case_uuid">Buscar por ID Caso</option>
+          <option value="phone">Buscar por Teléfono</option>
+          <option value="dni">Buscar por DNI</option>
+          <option value="case_result name">Buscar por Estado</option>
+        </select>
+      </div>
+      <div className="text-black flex items-center gap-2 h-12">
         <input
           type="date"
           name="gte"
@@ -54,6 +56,7 @@ const TableSearch = ({
           max={maxGteDate()}
           value={gteDate}
           onChange={e => setGteDate(e.target.value)}
+          className="h-full rounded-lg bg-white dark:bg-tuna hover:text-white dark:text-white text-black border border-persian-green p-2 cursor-pointer hover:bg-persian-green"
         />
         <input
           type="date"
@@ -62,6 +65,7 @@ const TableSearch = ({
           max={maxLteDate()}
           value={lteDate}
           onChange={e => setLteDate(e.target.value)}
+          className="h-full rounded-lg bg-white dark:bg-tuna hover:text-white dark:text-white text-black border border-persian-green p-2 cursor-pointer hover:bg-persian-green"
         />
       </div>
     </div>

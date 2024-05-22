@@ -10,13 +10,13 @@ export default function Table({
   const handleClassName = (sortName: string) => {
     return `${
       sortBy === sortName && sortDirection === "asc"
-        ? "icon-[ic--baseline-chevron-left]"
-        : "icon-[ic--baseline-chevron-right]"
+        ? "icon-[ic--baseline-chevron-left] bg-persian-green"
+        : "icon-[ic--baseline-chevron-right] bg-persian-green"
     } rotate-90 size-8`
   }
 
   return (
-    <table className="w-full table-auto text-black dark:bg-shark dark:text-white border dark:border-tuna">
+    <table className="w-full table-auto text-black dark:bg-shark bg-white dark:text-white border dark:border-tuna rounded-2xl">
       <thead>
         <tr className="text-left">
           <th className="w-[250px] font-medium px-4 py-2">
@@ -34,7 +34,6 @@ export default function Table({
               <span className={handleClassName("last_updated")} />
             </button>
           </th>
-
           <th className="min-w-[80px] px-4 font-medium py-2">
             <button
               className="w-max flex gap-2"
@@ -108,34 +107,34 @@ export default function Table({
       <tbody>
         {cases?.map(_case => (
           <tr key={_case.id}>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[200px] truncate">{_case?.last_updated}</p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[80px] truncate">{_case?.case_uuid}</p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[120px] truncate">{_case?.phone}</p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[100px] truncate">
                 {_case?.extra_metadata?.dni}
               </p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[80px] truncate">
                 {_case?.extra_metadata?.grupo}
               </p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[80px] truncate">
                 {_case?.extra_metadata?.orden}
               </p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[100px] truncate">{_case?.case_duration}</p>
             </td>
-            <td className="border-b border-tuna py-5 px-4">
+            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
               <p className="max-w-[260px] truncate">
                 {_case?.case_result?.name}
               </p>

@@ -27,35 +27,34 @@ export default function ClientPage() {
   } = useTable({ id: id ?? "0" })
 
   return (
-    <div>
-      <div className="flex flex-col px-4 sm:px-0">
-        <TableSearch
-          search={search}
-          setSearch={setSearch}
-          placeholder="Buscar..."
-          setSearchBy={setSearchBy}
-          setGteDate={setGteDate}
-          setLteDate={setLteDate}
-          gteDate={gteDate}
-          lteDate={lteDate}
-        />
-        <div className="w-full overflow-x-auto mb-10">
-          <Table
-            cases={cases}
-            sortCasesByCaseType={sortCasesByCaseType}
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-            handleSetCases={handleSetCases}
-          />
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={maxPage}
-          handlePrevClick={handlePrevClick}
-          handleNextClick={handleNextClick}
-          jumpToPage={jumpToPage}
+    <div className="flex flex-col px-4 sm:px-0">
+      <h1 className="text-xl mb-5">Lista de clientes de ${"cliente"}</h1>
+      <TableSearch
+        search={search}
+        setSearch={setSearch}
+        placeholder="Buscar..."
+        setSearchBy={setSearchBy}
+        setGteDate={setGteDate}
+        setLteDate={setLteDate}
+        gteDate={gteDate}
+        lteDate={lteDate}
+      />
+      <div className="w-full overflow-x-auto max-h-[calc(100vh-321px)] scrollbar-thin scrollbar-thumb-persian-green scrollbar-track-mercury rounded-2xl">
+        <Table
+          cases={cases}
+          sortCasesByCaseType={sortCasesByCaseType}
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+          handleSetCases={handleSetCases}
         />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={maxPage}
+        handlePrevClick={handlePrevClick}
+        handleNextClick={handleNextClick}
+        jumpToPage={jumpToPage}
+      />
     </div>
   )
 }
