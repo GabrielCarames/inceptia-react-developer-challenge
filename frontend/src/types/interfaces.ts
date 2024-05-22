@@ -216,3 +216,9 @@ export interface GoToPageProps {
   totalPages: number
   jumpToPage: (e: React.FormEvent<HTMLFormElement>) => void
 }
+
+export interface ShowSidebarButtonProps {
+  openSidebar: boolean
+  setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>
+  className?: string
+}
