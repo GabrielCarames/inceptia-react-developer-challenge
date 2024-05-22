@@ -25,7 +25,7 @@ const TableSearch = ({
 
   return (
     <div className="w-full flex justify-between items-center mb-6 md:flex-nowrap flex-wrap gap-5">
-      <div className="relative mb-10 sm:mb-0 flex h-12 w-full max-w-2xl items-center border-stroke bg-gray-2 pl-4 text-white bg-[#F1F2F3] dark:bg-tuna border-b-0 sm:border border-white-gallery dark:border-tuna border-b-transparent border-t-lg sm:rounded-lg">
+      <div className="relative mb-10 sm:mb-0 flex h-12 w-full max-w-2xl items-center border-stroke bg-gray-2 pl-4 text-white bg-gray-200 dark:bg-tuna border-b-0 sm:border border-white-gallery dark:border-tuna border-b-transparent border-t-lg sm:rounded-lg">
         <button className="absolute top-1/2 left-4 -translate-y-1/2 h-8">
           <span className="icon-[ic--baseline-search] size-8 bg-black dark:bg-white" />
         </button>

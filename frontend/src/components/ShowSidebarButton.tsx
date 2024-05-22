@@ -7,7 +7,7 @@ export default function ShowSidebarButton({
 }: ShowSidebarButtonProps) {
   return (
     <button
-      className={`flex justify-center items-center border border-persian-green rounded-lg hover:bg-persian-green ${
+      className={`flex justify-center items-center border border-persian-green rounded-lg hover:bg-persian-green group ${
         className ? className : ""
       }`}
       onClick={() => setOpenSidebar(!openSidebar)}
@@ -17,7 +17,7 @@ export default function ShowSidebarButton({
           openSidebar
             ? "icon-[ic--baseline-keyboard-double-arrow-left]"
             : "icon-[ic--baseline-keyboard-double-arrow-right]"
-        } size-7`}
+        } group-hover:bg-white size-7`}
       />
     </button>
   )
