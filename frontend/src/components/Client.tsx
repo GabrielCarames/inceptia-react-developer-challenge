@@ -8,10 +8,10 @@ export default function Client({
   name: string
 }) {
   return (
-    <li>
+    <li className="hover:bg-persian-green">
       <Link
         to={`/admin/cliente/${clientId}`}
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 px-4 py-2"
       >
         <span className="icon-[ic--outline-account-circle] size-8" />
         <p>{name}</p>

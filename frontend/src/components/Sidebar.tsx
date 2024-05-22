@@ -26,18 +26,20 @@ export default function Sidebar({ openSidebar, setOpenSidebar }: SidebarProps) {
       )}
       <aside
         className={`${
-          openSidebar ? "translate-x-0 relative" : "-translate-x-96 absolute"
-        } w-full max-w-60 h-full min-h-[calc(100vh-80px)] p-4 dark:bg-shark bg-white border-t border-t-ghost-white dark:border-tuna flex flex-col justify-between`}
+          openSidebar
+            ? "translate-x-0 absolute md:relative"
+            : "-translate-x-96 absolute"
+        } w-full max-w-60 h-full min-h-[calc(100vh-80px)] dark:bg-shark bg-white border-t border-t-ghost-white dark:border-tuna flex flex-col justify-between z-10`}
       >
         <div className="flex flex-col gap-5">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center p-4 pb-0">
             <h2>Clientes</h2>
             <ShowSidebarButton
               openSidebar={openSidebar}
               setOpenSidebar={setOpenSidebar}
             />
           </div>
-          <ul>
+          <ul className="flex flex-col gap-5">
             {clients?.map((client: ClientProps) => (
               <Client
                 key={client?.id}
@@ -47,7 +49,7 @@ export default function Sidebar({ openSidebar, setOpenSidebar }: SidebarProps) {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-5 md:hidden">
+        <div className="flex flex-col gap-5 md:hidden p-4">
           <span>{currentUser}</span>
           <button
             onClick={signOut}
