@@ -20,7 +20,7 @@ export default function Clients() {
         <ShowSidebarButton
           openSidebar={openSidebar}
           setOpenSidebar={setOpenSidebar}
-          className="absolute left-3 -top-14"
+          className="absolute sm:left-3 -top-14 left-7"
         />
       )}
       <aside

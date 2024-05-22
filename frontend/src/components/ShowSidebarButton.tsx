@@ -7,7 +7,7 @@ export default function ShowSidebarButton({
 }: ShowSidebarButtonProps) {
   return (
     <button
-      className={`flex justify-center items-center border border-persian-green rounded-lg ${
+      className={`flex justify-center items-center border border-persian-green rounded-lg hover:bg-persian-green ${
         className ? className : ""
       }`}
       onClick={() => setOpenSidebar(!openSidebar)}
