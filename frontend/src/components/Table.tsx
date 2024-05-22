@@ -15,6 +15,9 @@ export default function Table({
     } rotate-90 size-8`
   }
 
+  const defaultTdClassName =
+    "border-b border-white-gallery dark:border-tuna py-5 px-4"
+
   return (
     <table className="w-full table-auto text-black dark:bg-shark bg-white dark:text-white border dark:border-tuna rounded-2xl">
       <thead>
@@ -107,34 +110,34 @@ export default function Table({
       <tbody>
         {cases?.map(_case => (
           <tr key={_case.id}>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[200px] truncate">{_case?.last_updated}</p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[80px] truncate">{_case?.case_uuid}</p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[120px] truncate">{_case?.phone}</p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[100px] truncate">
                 {_case?.extra_metadata?.dni}
               </p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[80px] truncate">
                 {_case?.extra_metadata?.grupo}
               </p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[80px] truncate">
                 {_case?.extra_metadata?.orden}
               </p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[100px] truncate">{_case?.case_duration}</p>
             </td>
-            <td className="border-b border-white-gallery dark:border-tuna py-5 px-4">
+            <td className={`${defaultTdClassName}`}>
               <p className="max-w-[260px] truncate">
                 {_case?.case_result?.name}
               </p>

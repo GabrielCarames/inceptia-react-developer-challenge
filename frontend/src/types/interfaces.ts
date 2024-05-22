@@ -199,3 +199,20 @@ export interface DateInputProps {
   onChange: (value: string) => void
   value: string
 }
+
+export interface PaginationButtonsProps {
+  currentPage: number
+  totalPages: number
+  handlePrevClick: () => void
+  handleNextClick: () => void
+}
+
+export interface PaginationArrowProps {
+  handlePrevClick: () => void
+  orientation: string
+}
+
+export interface GoToPageProps {
+  totalPages: number
+  jumpToPage: (e: React.FormEvent<HTMLFormElement>) => void
+}
