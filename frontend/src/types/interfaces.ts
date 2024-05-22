@@ -191,3 +191,11 @@ export interface handleSearchProps {
   setCases: (cases: InboundCase[]) => void
   setMaxPage: (page: number) => void
 }
+
+export interface DateInputProps {
+  name: string
+  id: string
+  max: () => string
+  onChange: (value: string) => void
+  value: string
+}

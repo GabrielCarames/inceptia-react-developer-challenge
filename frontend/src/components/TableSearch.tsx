@@ -1,4 +1,5 @@
 import { TableSearchProps } from "@/types/interfaces"
+import DateInput from "./DateInput"
 
 const TableSearch = ({
   placeholder,
@@ -49,23 +50,19 @@ const TableSearch = ({
         </select>
       </div>
       <div className="text-black flex items-center gap-2 h-12">
-        <input
-          type="date"
+        <DateInput
           name="gte"
           id="gte"
-          max={maxGteDate()}
+          max={maxGteDate}
+          onChange={setGteDate}
           value={gteDate}
-          onChange={e => setGteDate(e.target.value)}
-          className="h-full rounded-lg bg-white dark:bg-tuna hover:text-white dark:text-white text-black border border-persian-green p-2 cursor-pointer hover:bg-persian-green"
         />
-        <input
-          type="date"
+        <DateInput
           name="lte"
           id="lte"
-          max={maxLteDate()}
+          max={maxLteDate}
+          onChange={setLteDate}
           value={lteDate}
-          onChange={e => setLteDate(e.target.value)}
-          className="h-full rounded-lg bg-white dark:bg-tuna hover:text-white dark:text-white text-black border border-persian-green p-2 cursor-pointer hover:bg-persian-green"
         />
       </div>
     </div>
