@@ -9,7 +9,7 @@ const PrivateRoute = ({ Component }: { Component: () => JSX.Element }) => {
     return <span className="loading loading-dots loading-lg"></span>
   if (currentUser) return <Component />
 
-  return <Navigate to="/signin" />
+  return <Navigate to="/iniciar-sesion" />
 }
 
 export default PrivateRoute

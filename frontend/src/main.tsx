@@ -24,11 +24,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route path="/" element={<Navigate to="/admin" />} />
             <Route path="/admin" element={<PrivateRoute Component={App} />}>
-              <Route path="client">
+              <Route path="cliente">
                 <Route path=":id" element={<Client />} />
               </Route>
             </Route>
-            <Route path="/signin" element={<SignIn />} />
+            <Route path="/iniciar-sesion" element={<SignIn />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

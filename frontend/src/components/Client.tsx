@@ -10,7 +10,7 @@ export default function Client({
   return (
     <li>
       <Link
-        to={`/admin/client/${clientId}`}
+        to={`/admin/cliente/${clientId}`}
         className="flex items-center gap-2"
       >
         <span className="icon-[ic--outline-account-circle] size-8" />
