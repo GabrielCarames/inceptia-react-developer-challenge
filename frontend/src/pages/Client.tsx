@@ -27,7 +27,7 @@ export default function ClientPage() {
   } = useTable({ id: id ?? "0" })
 
   return (
-    <div className="flex flex-col px-4 sm:px-0">
+    <div className="flex flex-col sm:px-0">
       <h1 className="text-xl mb-5">Lista de clientes de ${"cliente"}</h1>
       <TableSearch
         search={search}

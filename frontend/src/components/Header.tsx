@@ -1,19 +1,29 @@
 import useSignOut from "@/hooks/useSignOut"
 import ThemeButton from "./ThemeButton"
+import { HeaderProps } from "@/types/interfaces"
 
-export default function Header() {
+export default function Header({ openSidebar }: HeaderProps) {
   const { signOut, currentUser } = useSignOut()
 
   return (
-    <header className="flex justify-end p-4 h-20 w-full items-center gap-10 dark:bg-shark bg-white">
-      {currentUser}
-      <button
-        onClick={signOut}
-        className="border border-persian-green h-12 rounded-lg p-4 flex justify-center items-center hover:bg-persian-green text-black dark:text-white hover:text-white"
+    <header className="flex justify-between p-4 h-20 w-full items-center gap-10 dark:bg-shark bg-white">
+      <div
+        className={`${
+          openSidebar ? "" : "ml-10"
+        }  duration-0 text-sm sm:text-base`}
       >
-        Cerrar sesión
-      </button>
-      <ThemeButton />
+        <span className="font-bold">Inceptia</span> | React Developer Challenge
+      </div>
+      <div className="flex items-center gap-5">
+        <span className="hidden md:inline-block">{currentUser}</span>
+        <button
+          onClick={signOut}
+          className="hidden md:flex border border-persian-green h-12 rounded-lg p-4 justify-center items-center hover:bg-persian-green text-black dark:text-white hover:text-white"
+        >
+          Cerrar sesión
+        </button>
+        <ThemeButton />
+      </div>
     </header>
   )
 }

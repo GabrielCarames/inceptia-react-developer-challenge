@@ -24,8 +24,8 @@ const TableSearch = ({
   }
 
   return (
-    <div className="w-full flex justify-between items-center mb-6">
-      <div className="relative flex h-12 w-full max-w-2xl items-center border-stroke bg-gray-2 pl-4 text-white bg-[#F1F2F3] dark:bg-tuna border border-white-gallery dark:border-tuna border-b-transparent rounded-lg">
+    <div className="w-full flex justify-between items-center mb-6 md:flex-nowrap flex-wrap gap-5">
+      <div className="relative mb-10 sm:mb-0 flex h-12 w-full max-w-2xl items-center border-stroke bg-gray-2 pl-4 text-white bg-[#F1F2F3] dark:bg-tuna border-b-0 sm:border border-white-gallery dark:border-tuna border-b-transparent border-t-lg sm:rounded-lg">
         <button className="absolute top-1/2 left-4 -translate-y-1/2 h-8">
           <span className="icon-[ic--baseline-search] size-8 bg-black dark:bg-white" />
         </button>
@@ -38,7 +38,7 @@ const TableSearch = ({
         />
         <select
           name="order"
-          className="w-full max-w-[200px] hover:text-white h-full hover:bg-persian-green border-persian-green rounded-lg rounded-l-none bg-white text-black dark:text-white dark:bg-tuna border p-2 cursor-pointer"
+          className="absolute top-12 left-0 sm:relative sm:inset-0 w-full sm:w-[200px] hover:text-white h-full hover:bg-persian-green border-persian-green border-t-0 sm:border-t rounded-b-lg sm:rounded-lg sm:rounded-l-none bg-white text-black dark:text-white dark:bg-tuna border p-2 cursor-pointer"
           onChange={e => setSearchBy(e.target.value)}
           defaultValue={"last_updated"}
         >
@@ -49,7 +49,7 @@ const TableSearch = ({
           <option value="case_result name">Buscar por Estado</option>
         </select>
       </div>
-      <div className="text-black flex items-center gap-2 h-12">
+      <div className="text-black flex items-center gap-2 h-12 w-full sm:w-auto">
         <DateInput
           name="gte"
           id="gte"

@@ -11,10 +11,8 @@ const useSidebar = () => {
         setOpenSidebar(true)
       }
     }
-
     window.addEventListener("resize", handleResize)
     handleResize()
-
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 

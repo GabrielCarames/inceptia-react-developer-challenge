@@ -21,10 +21,10 @@ export default function Table({
   return (
     <table className="w-full table-auto text-black dark:bg-shark bg-white dark:text-white border dark:border-tuna rounded-2xl">
       <thead>
-        <tr className="text-left">
+        <tr className="text-left bg-persian-green text-white">
           <th className="w-[250px] font-medium px-4 py-2">
             <button
-              className="w-max flex gap-2"
+              className="w-max flex gap-2 items-center"
               onClick={() =>
                 sortCasesByCaseType({
                   sortBy: "last_updated",
@@ -39,7 +39,7 @@ export default function Table({
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
             <button
-              className="w-max flex gap-2"
+              className="w-max flex gap-2 items-center"
               onClick={() =>
                 sortCasesByCaseType({
                   sortBy: "case_uuid",
@@ -54,7 +54,7 @@ export default function Table({
           </th>
           <th className="min-w-[120px] px-4 font-medium py-2">
             <button
-              className="w-max flex gap-2"
+              className="w-max flex gap-2 items-center"
               onClick={() =>
                 sortCasesByCaseType({ sortBy: "phone", cases, handleSetCases })
               }
@@ -64,23 +64,23 @@ export default function Table({
             </button>
           </th>
           <th className="min-w-[100px] px-4 font-medium py-2">
-            <button className="w-max flex gap-2">
+            <button className="w-max flex gap-2 items-center">
               <span>DNI</span>
             </button>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
-            <div className="flex w-max gap-2">
+            <div className="flex w-max gap-2 items-center">
               <span>Grupo</span>
             </div>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
-            <div className="flex w-max gap-2">
+            <div className="flex w-max gap-2 items-center">
               <span>Orden</span>
             </div>
           </th>
           <th className="min-w-[80px] px-4 font-medium py-2">
             <button
-              className="w-max flex gap-2"
+              className="w-max flex gap-2 items-center"
               onClick={() =>
                 sortCasesByCaseType({
                   sortBy: "case_duration",
@@ -94,7 +94,7 @@ export default function Table({
             </button>
           </th>
           <th className="w-[290px] px-4 font-medium py-2">
-            <div className="flex w-max gap-2">
+            <div className="flex w-max gap-2 items-center">
               <span>Estado</span>
             </div>
           </th>

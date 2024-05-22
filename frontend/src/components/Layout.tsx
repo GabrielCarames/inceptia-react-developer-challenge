@@ -1,13 +1,16 @@
 import { LayoutProps } from "@/types/interfaces"
 import Header from "./Header"
-import Clients from "./Clients"
+import Sidebar from "./Sidebar"
+import useSidebar from "@/hooks/useSidebar"
 
 export default function Layout({ children }: LayoutProps) {
+  const { openSidebar, setOpenSidebar } = useSidebar()
+
   return (
     <div className="flex flex-col">
-      <Header />
+      <Header openSidebar={openSidebar} />
       <div className="flex relative">
-        <Clients />
+        <Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
         <main className="p-4 w-full">{children}</main>
       </div>
     </div>

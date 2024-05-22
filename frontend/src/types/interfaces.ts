@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export interface InputErrorProps {
   message: string
 }
@@ -221,4 +223,13 @@ export interface ShowSidebarButtonProps {
   openSidebar: boolean
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>
   className?: string
+}
+
+export interface SidebarProps {
+  openSidebar: boolean
+  setOpenSidebar: Dispatch<SetStateAction<boolean>>
+}
+
+export interface HeaderProps {
+  openSidebar: boolean
 }
