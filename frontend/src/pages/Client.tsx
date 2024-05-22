@@ -39,7 +39,7 @@ export default function ClientPage() {
         gteDate={gteDate}
         lteDate={lteDate}
       />
-      <div className="w-full overflow-x-auto max-h-[calc(100vh-321px)] scrollbar-thin scrollbar-thumb-persian-green scrollbar-track-mercury rounded-2xl">
+      <div className="w-full overflow-x-auto max-h-[calc(100vh-321px)] scrollbar-thin scrollbar-thumb-persian-green scrollbar-track-gray-200 dark:scrollbar-track-tuna rounded-2xl">
         <Table
           cases={cases}
           sortCasesByCaseType={sortCasesByCaseType}
