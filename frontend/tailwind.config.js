@@ -22,5 +22,5 @@ export default {
       }
     }
   },
-  plugins: [addDynamicIconSelectors()]
+  plugins: [addDynamicIconSelectors(), require("tailwind-scrollbar")]
 }
