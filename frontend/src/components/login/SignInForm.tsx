@@ -45,7 +45,7 @@ const SignInForm = () => {
         </InputGroup>
         <Button
           type="submit"
-          className="h-10 bg-persian-green rounded-md mt-4 hover:bg-monte-carlo hover:text-black text-white dark:text-black"
+          className="h-10 bg-persian-green rounded-md mt-4 hover:bg-monte-carlo hover:text-black text-white dark:text-white"
         >
           Ingresar
         </Button>

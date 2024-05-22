@@ -4,7 +4,7 @@ interface AuthContextProps {
   currentUser: string | null
   isLoading: boolean
   setIsLoading: (loading: boolean) => void
-  setCurrentUser: (user: string) => void
+  setCurrentUser: (user: string | null) => void
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -15,7 +15,7 @@ export const AuthContext = createContext<AuthContextProps>({
 })
 
 const defaultUser = () => {
-  const userEmail = sessionStorage.getItem("user_email")
+  const userEmail = localStorage.getItem("user_email")
   return userEmail ? userEmail : null
 }
 

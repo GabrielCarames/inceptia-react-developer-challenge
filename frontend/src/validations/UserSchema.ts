@@ -4,7 +4,7 @@ export const userSchema = z.object({
   email: z
     .string()
     .email({
-      message: "El email debe ser válido"
+      message: "El email debe ser válido."
     })
     .min(3, {
       message: "El email debe contener al menos 3 caracteres."

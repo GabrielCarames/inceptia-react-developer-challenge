@@ -15,7 +15,7 @@ export default function GoToPage({ totalPages, jumpToPage }: GoToPageProps) {
         min={1}
       />
       <button
-        className="border border-persian-green bg-white text-black hover:text-white rounded-md dark:bg-tuna dark:text-white p-2 px-4 h-[50px] duration-200 hover:bg-persian-green"
+        className="bg-persian-green text-white hover:bg-monte-carlo hover:text-white rounded-md dark:text-white p-2 px-4 h-[50px] duration-200"
         type="submit"
       >
         Buscar

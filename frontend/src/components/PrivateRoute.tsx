@@ -5,9 +5,13 @@ import { AuthContext } from "../contexts/AuthContext"
 const PrivateRoute = ({ Component }: { Component: () => JSX.Element }) => {
   const { currentUser, isLoading } = useContext(AuthContext)
 
-  if (isLoading)
+  if (isLoading) {
     return <span className="loading loading-dots loading-lg"></span>
-  if (currentUser) return <Component />
+  }
+
+  if (currentUser) {
+    return <Component />
+  }
 
   return <Navigate to="/iniciar-sesion" />
 }

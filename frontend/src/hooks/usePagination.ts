@@ -1,8 +1,8 @@
 import { useState } from "react"
 
 const defaultCurrentPage = () => {
-  if (sessionStorage?.getItem("currentPage")) {
-    const { page } = JSON.parse(sessionStorage.getItem("currentPage") ?? "")
+  if (localStorage?.getItem("currentPage")) {
+    const { page } = JSON.parse(localStorage.getItem("currentPage") ?? "")
     return page
   }
   return 1
@@ -12,13 +12,13 @@ const usePagination = (maxPage: number) => {
   const [currentPage, setCurrentPage] = useState(defaultCurrentPage())
 
   const clearCurrentPage = () => {
-    sessionStorage?.removeItem("currentPage")
+    localStorage?.removeItem("currentPage")
     setCurrentPage(1)
   }
 
   const handlePrevClick = () => {
     if (currentPage > 1) {
-      sessionStorage?.setItem(
+      localStorage?.setItem(
         "currentPage",
         JSON.stringify({
           page: currentPage - 1,
@@ -31,7 +31,7 @@ const usePagination = (maxPage: number) => {
 
   const handleNextClick = () => {
     if (currentPage < maxPage) {
-      sessionStorage?.setItem(
+      localStorage?.setItem(
         "currentPage",
         JSON.stringify({
           page: currentPage + 1,
@@ -48,7 +48,7 @@ const usePagination = (maxPage: number) => {
     const fields = Object.fromEntries(formData.entries())
     const page = Number(fields?.jumptopage)
     if (page === 0) return
-    sessionStorage?.setItem(
+    localStorage?.setItem(
       "currentPage",
       JSON.stringify({
         page: page,
