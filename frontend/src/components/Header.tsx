@@ -1,6 +1,7 @@
 import useSignOut from "@/hooks/useSignOut"
 import ThemeButton from "./ThemeButton"
 import { HeaderProps } from "@/types/interfaces"
+import { Link } from "react-router-dom"
 
 export default function Header({ openSidebar }: HeaderProps) {
   const { signOut, currentUser } = useSignOut()
@@ -12,7 +13,10 @@ export default function Header({ openSidebar }: HeaderProps) {
           openSidebar ? "" : "ml-10"
         }  duration-0 text-sm sm:text-base`}
       >
-        <span className="font-bold">Inceptia</span> | React Developer Challenge
+        <Link to="/">
+          <span className="font-bold">Inceptia</span> | React Developer
+          Challenge
+        </Link>
       </div>
       <div className="flex items-center gap-5">
         <span className="hidden md:inline-block">{currentUser}</span>

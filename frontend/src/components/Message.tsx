@@ -14,7 +14,9 @@ export default function Message({ text, role, time }: MessageProps) {
     <li className="flex text-sm sm:text-base">
       <span
         className={`${
-          role === "cliente" ? "text-persian-green" : "text-monte-carlo"
+          role === "cliente"
+            ? "text-persian-green"
+            : "dark:text-monte-carlo text-green-700"
         } min-w-14 capitalize pt-2`}
       >
         {role}
@@ -22,7 +24,9 @@ export default function Message({ text, role, time }: MessageProps) {
       <div className="p-2 pl-5 rounded-xl duration-300">
         <span>{text}</span>
         {time && (
-          <span className="text-xs text-gray-400 ml-2">{formatTime(time)}</span>
+          <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">
+            {formatTime(time)}
+          </span>
         )}
       </div>
     </li>
