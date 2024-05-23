@@ -47,6 +47,7 @@ Toda la aplicación esta adaptada a dispositivos móviles.
 Clonar e instalar
 ```bash
 git clone https://github.com/GabrielCarames/inceptia-react-developer-challenge.git
+cd frontend
 pnpm i
 ```
 Ejecutar la aplicación de forma local
@@ -60,4 +61,4 @@ VITE_API_BASE_URL=https://admindev.inceptia.ai/api/v1
 ```
 
 ## Despliegue 🚀
-Puedes ver el despliegue de la aplicación [aquí]().
+Puedes ver el despliegue de la aplicación [aquí](https://inceptia-react-developer-challenge.vercel.app/iniciar-sesion).
