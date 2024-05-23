@@ -1,4 +1,5 @@
 import { TableProps } from "@/types/interfaces"
+import ChatButton from "./ChatButton"
 
 export default function Table({
   cases,
@@ -16,7 +17,7 @@ export default function Table({
   }
 
   const defaultTdClassName =
-    "border-b border-white-gallery dark:border-tuna py-5 px-4"
+    "border-b border-white-gallery dark:border-tuna py-4 px-4"
 
   return (
     <table className="w-full table-auto text-black dark:bg-shark bg-white dark:text-white border dark:border-tuna rounded-2xl">
@@ -93,9 +94,14 @@ export default function Table({
               <span className={handleClassName("case_duration")} />
             </button>
           </th>
-          <th className="w-[290px] px-4 font-medium py-2">
+          <th className="min-w-[290px] px-4 font-medium py-2">
             <div className="flex w-max gap-2 items-center">
               <span>Estado</span>
+            </div>
+          </th>
+          <th className="w-[90] px-4 font-medium py-2">
+            <div className="flex w-max gap-2 items-center">
+              <span>Acción</span>
             </div>
           </th>
         </tr>
@@ -141,6 +147,12 @@ export default function Table({
               <p className="max-w-[260px] truncate">
                 {_case?.case_result?.name}
               </p>
+            </td>
+            <td className={`${defaultTdClassName}`}>
+              <ChatButton
+                responses={_case?.case_log?.responses}
+                transcription={_case?.case_log?.transcription}
+              />
             </td>
           </tr>
         ))}

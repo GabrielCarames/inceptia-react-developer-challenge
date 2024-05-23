@@ -90,7 +90,7 @@ export interface CaseResult {
   contacted: boolean
 }
 
-interface CaseResponse {
+export interface CaseResponse {
   text: string
   time: number
   confidence: number
@@ -232,4 +232,32 @@ export interface SidebarProps {
 
 export interface HeaderProps {
   openSidebar: boolean
+}
+
+export interface MessageProps {
+  text: string
+  role: string
+  time?: number
+}
+
+export interface ResponsesAndTranscriptionProps {
+  responses: CaseResponse[]
+  transcription: CaseTranscription[]
+}
+
+export interface CaseResponseWithRole extends CaseResponse {
+  role: string
+}
+
+export interface CaseTranscriptionWithRole extends CaseTranscription {
+  role: string
+}
+
+export interface ResponsesAndTranscriptionWithRoleProps {
+  responses: CaseResponseWithRole[]
+  transcription: CaseTranscriptionWithRole[]
+}
+
+export interface ConversationProps {
+  conversation: CaseResponseWithRole[] | CaseTranscriptionWithRole[]
 }
