@@ -10,6 +10,7 @@ import Client from "./pages/Client.tsx"
 import TanStackProvider from "./components/TanStackProvider.tsx"
 import PrivateRoute from "./components/PrivateRoute.tsx"
 import AuthProvider from "./contexts/AuthContext.tsx"
+import Home from "./pages/Home.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -23,7 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Navigate to="/admin" />} />
+            <Route path="/admin" element={<Navigate to="/admin/inicio" />} />
             <Route path="/admin" element={<PrivateRoute Component={App} />}>
+              <Route path="inicio" element={<Home />} />
               <Route path="cliente">
                 <Route path=":id" element={<Client />} />
               </Route>

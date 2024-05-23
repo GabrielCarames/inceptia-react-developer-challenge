@@ -13,7 +13,7 @@ export default function Header({ openSidebar }: HeaderProps) {
           openSidebar ? "" : "ml-10"
         }  duration-0 text-sm sm:text-base`}
       >
-        <Link to="/">
+        <Link to="/admin/inicio" className="hover:text-persian-green">
           <span className="font-bold">Inceptia AI</span> | React Developer
           Challenge
         </Link>
