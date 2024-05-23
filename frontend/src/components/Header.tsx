@@ -14,7 +14,7 @@ export default function Header({ openSidebar }: HeaderProps) {
         }  duration-0 text-sm sm:text-base`}
       >
         <Link to="/">
-          <span className="font-bold">Inceptia</span> | React Developer
+          <span className="font-bold">Inceptia AI</span> | React Developer
           Challenge
         </Link>
       </div>

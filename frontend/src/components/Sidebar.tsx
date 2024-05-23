@@ -33,7 +33,7 @@ export default function Sidebar({ openSidebar, setOpenSidebar }: SidebarProps) {
       >
         <div className="flex flex-col gap-5">
           <div className="flex justify-between items-center p-4 pb-0">
-            <h2>Clientes</h2>
+            <h2 className="font-bold">Clientes</h2>
             <ShowSidebarButton
               openSidebar={openSidebar}
               setOpenSidebar={setOpenSidebar}

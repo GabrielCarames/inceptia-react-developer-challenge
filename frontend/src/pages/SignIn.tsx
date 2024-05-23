@@ -7,7 +7,7 @@ export default function SignIn() {
         <div className="w-full flex flex-col gap-5">
           <div className="sm:mx-auto sm:w-full sm:max-wlg">
             <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
-              Inceptia - React Developer Challenge
+              Inceptia AI - React Developer Challenge
             </h1>
             <h2 className="text-center text-xl mt-5">Iniciar sesión</h2>
           </div>
