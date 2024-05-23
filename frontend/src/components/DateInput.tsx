@@ -18,7 +18,7 @@ export default function DateInput({
         value: value,
         onChange: e => onChange(e.target.value),
         className:
-          "w-full sm:w-max h-full rounded-lg bg-white dark:bg-tuna hover:text-white dark:text-white text-black border border-persian-green p-2 cursor-pointer hover:bg-persian-green"
+          "w-full sm:w-max h-full rounded-lg bg-white dark:bg-tuna hover:text-white dark:text-white text-black border border-persian-green p-2 cursor-pointer hover:bg-persian-green duration-300"
       }}
     />
   )

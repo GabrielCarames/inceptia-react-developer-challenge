@@ -22,7 +22,7 @@ export default function Header({ openSidebar }: HeaderProps) {
         <span className="hidden md:inline-block">{currentUser}</span>
         <button
           onClick={signOut}
-          className="hidden md:flex border border-persian-green h-12 rounded-lg p-4 justify-center items-center hover:bg-persian-green text-black dark:text-white hover:text-white"
+          className="hidden md:flex border border-persian-green h-12 rounded-lg p-4 justify-center items-center hover:bg-persian-green text-black dark:text-white hover:text-white duration-300"
         >
           Cerrar sesión
         </button>

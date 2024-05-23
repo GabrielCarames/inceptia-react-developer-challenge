@@ -17,7 +17,7 @@ export default function ChatButton({
         <Chat conversation={conversation} setShowChat={setShowChat} />
       )}
       <button
-        className="max-w-[80px] truncate bg-persian-green flex justify-center items-center p-2 rounded-lg hover:bg-monte-carlo"
+        className="max-w-[80px] truncate bg-persian-green flex justify-center items-center p-2 rounded-lg hover:bg-monte-carlo duration-300"
         onClick={() => setShowChat(true)}
       >
         <span className="icon-[ic--baseline-chat] size-6 bg-white" />

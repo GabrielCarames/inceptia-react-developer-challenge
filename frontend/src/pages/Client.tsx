@@ -29,7 +29,7 @@ export default function ClientPage() {
 
   return (
     <div className="flex flex-col sm:px-0 overflow-x-auto w-full">
-      <h1 className="text-xl mb-5">Lista de clientes de ${"cliente"}</h1>
+      <h1 className="text-xl mb-5 font-bold">Lista de clientes</h1>
       <TableSearch
         search={search}
         setSearch={setSearch}

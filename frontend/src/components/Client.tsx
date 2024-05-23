@@ -8,7 +8,7 @@ export default function Client({
   name: string
 }) {
   return (
-    <li className="hover:bg-persian-green hover:text-white">
+    <li className="hover:bg-persian-green hover:text-white duration-300">
       <Link
         to={`/admin/cliente/${clientId}`}
         className="flex items-center gap-2 px-4 py-2"

@@ -4,7 +4,7 @@ export default function GithubButton() {
   return (
     <Link
       to="https://github.com/GabrielCarames/inceptia-react-developer-challenge"
-      className="flex items-center gap-3 border border-persian-green rounded-lg p-2 px-4 hover:bg-persian-green hover:text-white bg-white dark:bg-tuna"
+      className="flex items-center gap-3 border border-persian-green rounded-lg p-2 px-4 hover:bg-persian-green hover:text-white bg-white dark:bg-tuna duration-300"
       target="_blank"
     >
       <div className="bg-white rounded-lg p-0 flex justify-center items-center">

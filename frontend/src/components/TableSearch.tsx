@@ -38,7 +38,7 @@ const TableSearch = ({
         />
         <select
           name="order"
-          className="absolute top-12 left-0 sm:relative sm:inset-0 w-full sm:w-[200px] hover:text-white h-full hover:bg-persian-green border-persian-green border-t-0 sm:border-t rounded-b-lg sm:rounded-lg sm:rounded-l-none bg-white text-black dark:text-white dark:bg-tuna border p-2 cursor-pointer"
+          className="absolute top-12 left-0 sm:relative sm:inset-0 w-full sm:w-[200px] hover:text-white h-full hover:bg-persian-green border-persian-green border-t-0 sm:border-t rounded-b-lg sm:rounded-lg sm:rounded-l-none bg-white text-black dark:text-white dark:bg-tuna border p-2 cursor-pointer duration-300"
           onChange={e => setSearchBy(e.target.value)}
           defaultValue={"last_updated"}
         >

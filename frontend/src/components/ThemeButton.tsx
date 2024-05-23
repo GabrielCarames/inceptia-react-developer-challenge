@@ -5,7 +5,7 @@ export default function ThemeButton() {
 
   return (
     <button
-      className="  rounded-full bg-gray-200 dark:bg-tuna h-min flex justify-center items-center p-4"
+      className="  rounded-full bg-gray-200 dark:bg-tuna h-min flex justify-center items-center p-4 duration-300"
       onClick={handleChangeTheme}
     >
       {theme === "dark" ? (

@@ -12,7 +12,7 @@ export default function Chat({ conversation, setShowChat }: ChatProps) {
       <div className="flex justify-center items-center flex-col gap-3 w-full max-w-2xl bg-white dark:bg-tuna rounded-lg p-4 relative">
         <h3 className="font-bold">Conversación</h3>
         <button
-          className="flex justify-center items-center absolute top-3 right-2 group"
+          className="flex justify-center items-center absolute top-3 right-2 group duration-300"
           onClick={() => setShowChat(false)}
         >
           <span className="icon-[ic--baseline-close] size-7 group-hover:bg-persian-green" />
