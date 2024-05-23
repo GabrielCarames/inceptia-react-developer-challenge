@@ -6,7 +6,8 @@ export default function Table({
   sortCasesByCaseType,
   sortDirection,
   sortBy,
-  handleSetCases
+  handleSetCases,
+  isLoading
 }: TableProps) {
   const handleClassName = (sortName: string) => {
     return `${
@@ -113,7 +114,12 @@ export default function Table({
           </tr>
         </tbody>
       )}
-      <tbody>
+      <tbody className="w-full">
+        {isLoading && (
+          <div className="h-[73px] w-full flex items-center px-4">
+            Cargando...
+          </div>
+        )}
         {cases?.map(_case => (
           <tr key={_case.id}>
             <td className={`${defaultTdClassName}`}>

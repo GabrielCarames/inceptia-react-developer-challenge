@@ -29,7 +29,7 @@ const useTable = ({ id }: { id: string }) => {
 
   const MAX_RESULTS_PER_PAGE = 20
 
-  const { data: casesBySearch } = useQuery({
+  const { data: casesBySearch, isLoading } = useQuery({
     queryKey: ["casesBySearch", currentPage, gteDate, lteDate],
     queryFn: () =>
       getCases({
@@ -77,7 +77,8 @@ const useTable = ({ id }: { id: string }) => {
     setLteDate,
     gteDate,
     lteDate,
-    handleSetCases
+    handleSetCases,
+    isLoading
   }
 }
 

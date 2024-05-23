@@ -23,7 +23,8 @@ export default function ClientPage() {
     setLteDate,
     gteDate,
     lteDate,
-    handleSetCases
+    handleSetCases,
+    isLoading
   } = useTable({ id: id ?? "0" })
 
   return (
@@ -46,6 +47,7 @@ export default function ClientPage() {
           sortBy={sortBy}
           sortDirection={sortDirection}
           handleSetCases={handleSetCases}
+          isLoading={isLoading}
         />
       </div>
       <Pagination

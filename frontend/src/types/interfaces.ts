@@ -153,6 +153,7 @@ export interface TableProps {
   sortDirection: string
   sortBy: InboundCaseKeys
   handleSetCases: (newCases: InboundCase[]) => void
+  isLoading: boolean
 }
 
 export interface PaginationProps {
