@@ -13,7 +13,7 @@ export default function Sidebar({ openSidebar, setOpenSidebar }: SidebarProps) {
     refetchOnWindowFocus: false
   })
 
-  const { signOut, currentUser } = useSignOut()
+  const { signOut, userEmail } = useSignOut()
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function Sidebar({ openSidebar, setOpenSidebar }: SidebarProps) {
           </ul>
         </div>
         <div className="flex flex-col gap-5 md:hidden p-4">
-          <span>{currentUser}</span>
+          <span>{userEmail}</span>
           <button
             onClick={signOut}
             className="border border-persian-green h-12 rounded-lg p-4 flex justify-center items-center hover:bg-persian-green text-black dark:text-white hover:text-white"
