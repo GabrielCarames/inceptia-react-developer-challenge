@@ -26,6 +26,11 @@ export default function Chat({ conversation, setShowChat }: ChatProps) {
               time={message.time}
             />
           ))}
+          {conversation?.length === 0 && (
+            <li className="text-center text-black dark:text-white">
+              No hay mensajes en este chat
+            </li>
+          )}
         </ul>
       </div>
     </section>
