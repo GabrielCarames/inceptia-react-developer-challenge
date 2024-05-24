@@ -1,4 +1,4 @@
-import { getClients } from "./services/clients"
+import { getClients } from "../services/clients"
 import Client from "./Client"
 import { ClientProps, SidebarProps } from "@/types/interfaces"
 import { useQuery } from "@tanstack/react-query"

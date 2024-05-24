@@ -1,22 +1,23 @@
 import { useForm } from "@/hooks/useForm"
 import { useNavigate } from "react-router-dom"
 import { FormDataProps } from "@/types/interfaces"
-import { signIn } from "@/components/services/login"
-import { useContext } from "react"
-import { AuthContext } from "@/contexts/AuthContext"
+import { handleSignIn } from "@/slices/authSlice"
+import { useDispatch } from "react-redux"
 
 const useSignIn = () => {
   const navigate = useNavigate()
-  const { setCurrentUser } = useContext(AuthContext)
+  const dispatch = useDispatch<any>()
 
-  const handleSignIn = async ({ data }: FormDataProps) => {
-    const res = await signIn({ data })
-    if (!res?.error) {
+  const handleSignInSubmit = async ({ data }: FormDataProps) => {
+    const resultAction = await dispatch(handleSignIn({ data }))
+    if (handleSignIn.fulfilled.match(resultAction)) {
       navigate("/admin")
-      setCurrentUser(res?.data?.email)
     }
   }
-  const { handleSubmit, inputErrors } = useForm({ onSubmit: handleSignIn })
+
+  const { handleSubmit, inputErrors } = useForm({
+    onSubmit: handleSignInSubmit
+  })
 
   return { handleSubmit, inputErrors }
 }

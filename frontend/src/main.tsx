@@ -9,8 +9,9 @@ import { Toaster } from "react-hot-toast"
 import Client from "./pages/Client.tsx"
 import TanStackProvider from "./components/TanStackProvider.tsx"
 import PrivateRoute from "./components/PrivateRoute.tsx"
-import AuthProvider from "./contexts/AuthContext.tsx"
 import Home from "./pages/Home.tsx"
+import { store } from "./store"
+import { Provider } from "react-redux"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -21,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     />
     <TanStackProvider>
       <BrowserRouter>
-        <AuthProvider>
+        <Provider store={store}>
           <Routes>
             <Route path="/" element={<Navigate to="/admin" />} />
             <Route path="/admin" element={<Navigate to="/admin/inicio" />} />
@@ -34,7 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="/iniciar-sesion" element={<SignIn />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </AuthProvider>
+        </Provider>
       </BrowserRouter>
     </TanStackProvider>
   </React.StrictMode>

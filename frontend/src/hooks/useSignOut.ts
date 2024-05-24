@@ -1,18 +1,19 @@
-import { AuthContext } from "@/contexts/AuthContext"
-import { useContext } from "react"
+import { handleSignOut } from "@/slices/authSlice"
+import { RootState } from "@/store"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 const useSignOut = () => {
-  const { setCurrentUser, currentUser } = useContext(AuthContext)
+  const userEmail = useSelector((state: RootState) => state.auth.user.email)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const signOut = () => {
-    localStorage.clear()
-    setCurrentUser(null)
+    dispatch(handleSignOut())
     navigate("/iniciar-sesion")
   }
 
-  return { signOut, currentUser }
+  return { signOut, userEmail }
 }
 
 export default useSignOut

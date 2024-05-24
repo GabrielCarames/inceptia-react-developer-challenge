@@ -1,15 +1,11 @@
-import { useContext } from "react"
 import { Navigate } from "react-router-dom"
-import { AuthContext } from "../contexts/AuthContext"
+import { useSelector } from "react-redux"
+import { RootState } from "@/store"
 
 const PrivateRoute = ({ Component }: { Component: () => JSX.Element }) => {
-  const { currentUser, isLoading } = useContext(AuthContext)
+  const userEmail = useSelector((state: RootState) => state.auth.user.email)
 
-  if (isLoading) {
-    return <span className="loading loading-dots loading-lg"></span>
-  }
-
-  if (currentUser) {
+  if (userEmail) {
     return <Component />
   }
 

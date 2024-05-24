@@ -116,9 +116,11 @@ export default function Table({
       )}
       <tbody className="w-full">
         {isLoading && (
-          <div className="h-[73px] w-full flex items-center px-4">
-            Cargando...
-          </div>
+          <tr>
+            <td className="h-[73px] w-full flex items-center px-4">
+              Cargando...
+            </td>
+          </tr>
         )}
         {cases?.map(_case => (
           <tr key={_case.id}>
